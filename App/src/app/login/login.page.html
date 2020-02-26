@@ -10,19 +10,21 @@
              offset-xl="4">
       <ion-card>
         <ion-card-content>
-          <ion-item lines="none">
-            <ion-label position="stacked">Username</ion-label>
-            <ion-input type="text" placeholder="Username" name="username" ngModel required></ion-input>
-          </ion-item>
+          <form #form="ngForm" (ngSubmit)="signIn(form)">
+            <ion-item lines="none">
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input type="email" placeholder="Email" name="email" ngModel required></ion-input>
+            </ion-item>
 
-          <ion-item lines="none">
-            <ion-label position="stacked">Password</ion-label>
-            <ion-input type="password" placeholder="Password" name="password" ngModel required>
-            </ion-input>
-          </ion-item>
+            <ion-item lines="none">
+              <ion-label position="stacked">Password</ion-label>
+              <ion-input type="password" placeholder="Password" name="password" ngModel required>
+              </ion-input>
+            </ion-item>
 
-          <ion-button expand="block" color="primary" routerLink="/tabs" routerDirection="forward">Login
-          </ion-button>
+            <ion-button type="submit" color="primary" [disabled]="form.invalid" expand="block">Login
+            </ion-button>
+          </form>
           <ion-button expand="block" color="secondary" routerLink="/register" routerDirection="forward">Register
           </ion-button>
         </ion-card-content>
