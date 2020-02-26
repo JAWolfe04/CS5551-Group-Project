@@ -1,0 +1,18 @@
+Instructions to start application in Webstorm terminal after cloning project
+
+// Navigate to project root directory
+1. cd app
+
+// Initialize Amplify for login services, answer the following prompts
+2. amplify init
+   ? Do you want to use an existing environment? (Y/n) Y
+   ? Choose the environment you would like to use: (Use arrow keys) dev
+   ? Choose your default editor: (Use arrow keys) None
+   ? Do you want to use an AWS profile? (Y/n) Y
+   ? Please choose the profile you want to use (Use arrow keys) default
+
+// Install required libraries
+3. npm install
+
+// Start web server
+4. ionic serve
