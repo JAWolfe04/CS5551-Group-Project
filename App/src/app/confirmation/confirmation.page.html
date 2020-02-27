@@ -12,6 +12,11 @@
         <ion-card-content>
           <form #form="ngForm" (ngSubmit)="confirmCode(form)">
             <ion-item lines="none">
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input type="email" placeholder="Email" name="email" ngModel required></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
               <ion-label position="stacked">Code</ion-label>
               <ion-input type="text" placeholder="Code" name="code" ngModel required></ion-input>
             </ion-item>

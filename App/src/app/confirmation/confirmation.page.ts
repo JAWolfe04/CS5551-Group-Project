@@ -14,6 +14,6 @@ export class ConfirmationPage implements OnInit {
   }
 
   confirmCode(form) {
-    this.authService.confirmRegister(form.value.code);
+    this.authService.confirmRegister(form.value.email, form.value.code);
   }
 }
