@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Auth } from 'aws-amplify';
 import { ToastController  } from '@ionic/angular';
 
@@ -7,6 +8,7 @@ import { ToastController  } from '@ionic/angular';
   providedIn: 'root'
 })
 export class AuthService {
+  private email = new BehaviorSubject<string>('');
 
   constructor(private router: Router,
               private toastController: ToastController) { }
@@ -16,7 +18,8 @@ export class AuthService {
           .then( data => this.router.navigateByUrl('/tabs'))
           .catch( e => {
             if (e.code === 'UserNotConfirmedException') {
-              this.presentToast('Email is not confirmed');
+              this.email.next(email);
+              this.router.navigateByUrl('/confirmation');
             } else if (e.code === 'PasswordResetRequiredException') {
               this.presentToast('Password has been reset');
             } else if (e.code === 'NotAuthorizedException') {
@@ -31,6 +34,7 @@ export class AuthService {
 
   async register(email: string, password: string) {
       Auth.signUp(email, password).then(data => {
+        this.email.next(email);
         this.router.navigateByUrl('/confirmation');
       }).catch(e => {
         if (e.code === 'UsernameExistsException') {
@@ -49,6 +53,7 @@ export class AuthService {
     Auth.confirmSignUp(email, code)
         .then(data => {
           this.router.navigateByUrl('/');
+          this.presentToast('Email Confirmed');
         })
         .catch(e => {
           if (e.code === 'CodeMismatchException') {
@@ -57,6 +62,14 @@ export class AuthService {
             console.log(e);
           }
         });
+  }
+
+  getEmail() {
+      return this.email.value;
+  }
+
+  hasEmail() {
+      return this.email.value !== '';
   }
 
   isLoggedIn() {
@@ -71,7 +84,7 @@ export class AuthService {
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message,
-      duration: 3000,
+      duration: 2500,
       position: 'top',
       color: 'danger'
     });
