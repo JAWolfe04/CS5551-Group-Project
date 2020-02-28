@@ -33,6 +33,26 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'add-food',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../add-food/add-food.module').then(m => m.AddFoodPageModule)
+          }
+        ]
+      },
+      {
+        path: 'routine',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../routine/routine.module').then(m => m.RoutinePageModule)
+          }
+        ]
+      },
+      {
         path: 'exercise',
         children: [
           {
