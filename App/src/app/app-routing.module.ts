@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guard/auth.guard';
+import { ConfirmGuard } from './guard/confirm.guard';
 
 const routes: Routes = [
   {
@@ -15,11 +16,12 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },  {
-    path: 'add-food',
-    loadChildren: () => import('./add-food/add-food.module').then( m => m.AddFoodPageModule)
+  },
+  {
+    path: 'confirmation',
+    loadChildren: () => import('./confirmation/confirmation.module').then( m => m.ConfirmationPageModule),
+    canActivate: [ConfirmGuard]
   }
-
 
 ];
 @NgModule({
