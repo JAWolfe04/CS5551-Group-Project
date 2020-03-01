@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './guard/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { ConfirmGuard } from './guards/confirm.guard';
 
 const routes: Routes = [
   {
@@ -10,12 +11,29 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./Authentication/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./Authentication/register/register.module').then(m => m.RegisterPageModule)
+  },
+  {
+    path: 'confirmation',
+    loadChildren: () => import('./Authentication/confirmation/confirmation.module').then(m => m.ConfirmationPageModule),
+    canActivate: [ConfirmGuard]
+  },
+  {
+    path: 'forgotpassword',
+    loadChildren: () => import('./Authentication/forgotpassword/forgotpassword.module').then(m => m.ForgotpasswordPageModule)
+  },
+  {
+    path: 'submitforgotpassword',
+    loadChildren: () => import('./Authentication/submitforgotpassword/submitforgotpassword.module').then(m => m.SubmitforgotpasswordPageModule),
+    canActivate: [ConfirmGuard]
   }
+
+
+
 ];
 @NgModule({
   imports: [

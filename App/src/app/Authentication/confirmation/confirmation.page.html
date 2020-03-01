@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Confirm Email</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <form #form="ngForm" (ngSubmit)="confirmCode(form)">
+        <ion-item lines="none">
+          <ion-text class="ion-margin">
+            Enter the verification code we sent to {{email}}. If you do not see the email, check your spam folder.
+          </ion-text>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Code</ion-label>
+          <ion-input type="text" placeholder="Enter Verification Code Here" name="code" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-button type="submit" color="primary" [disabled]="form.invalid" expand="block">Confirm Code
+        </ion-button>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-button expand="block" color="secondary" (click)="resendCode()">Resend Code </ion-button>
+  <ion-button expand="block" color="secondary" routerLink="/" routerDirection="forward">Back to Login</ion-button>
+</ion-footer>
