@@ -21,6 +21,26 @@ const routes: Routes = [
         loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
       {
+        path: 'add-food',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../add-food/add-food.module').then(m => m.AddFoodPageModule)
+          }
+        ]
+      },
+      {
+        path: 'routine',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../routine/routine.module').then(m => m.RoutinePageModule)
+          }
+        ]
+      },
+      {
         path: 'exercise',
         loadChildren: () => import('../exercise/exercise.module').then(m => m.ExercisePageModule)
       },
