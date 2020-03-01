@@ -25,7 +25,13 @@ const routes: Routes = [
   {
     path: 'forgotpassword',
     loadChildren: () => import('./Authentication/forgotpassword/forgotpassword.module').then(m => m.ForgotpasswordPageModule)
+  },
+  {
+    path: 'submitforgotpassword',
+    loadChildren: () => import('./Authentication/submitforgotpassword/submitforgotpassword.module').then(m => m.SubmitforgotpasswordPageModule),
+    canActivate: [ConfirmGuard]
   }
+
 
 
 ];

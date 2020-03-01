@@ -76,6 +76,38 @@ export class AuthService {
     });
   }
 
+  forgotPasswordRequest(email: string) {
+    Auth.forgotPassword(email)
+        .then(data => {
+          this.email.next(email);
+          this.router.navigateByUrl('/submitforgotpassword');
+        })
+        .catch(e => {
+            if (e.code === 'UserNotFoundException') {
+                this.presentToast('Email is not registered');
+            } else {
+                console.log(e);
+            }
+        });
+  }
+
+  forgotPasswordSubmit(email: string, code: string, password: string) {
+    Auth.forgotPasswordSubmit(email, code, password)
+        .then(data => {
+          this.presentToast('Password reset');
+          this.router.navigateByUrl('/');
+        })
+        .catch(e => {
+            if (e.code === 'CodeMismatchException') {
+                this.presentToast('Invalid verification code, please try again');
+            } else if (e.code === 'InvalidParameterException' && e.message.indexOf('password') !== -1) {
+                this.presentToast('Passwords must have at least 8 characters');
+            } else {
+                console.log(e);
+            }
+        });
+  }
+
   getEmail() {
       return this.email.value;
   }
