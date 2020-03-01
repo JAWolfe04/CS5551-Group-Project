@@ -7,13 +7,16 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  loading = false;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  async signIn(form) {
-    this.authService.login(form.value.email, form.value.password);
+  signIn(form) {
+    this.loading = true;
+    this.authService.login(form.value.email, form.value.password)
+        .then( () => this.loading = false );
   }
 }

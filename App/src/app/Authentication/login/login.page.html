@@ -18,7 +18,9 @@
           </ion-input>
         </ion-item>
 
-        <ion-button type="submit" color="primary" expand="block" [disabled]="form.invalid">Login
+        <ion-button type="submit" color="primary" expand="block" [disabled]="form.invalid">
+            <ion-spinner *ngIf="loading"></ion-spinner>
+          Login
         </ion-button>
         <ion-item lines="none">
           <ion-label>Remember Me</ion-label>

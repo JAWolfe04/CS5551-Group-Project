@@ -15,24 +15,30 @@ export class AuthService {
               private toastController: ToastController) { }
 
   login(email: string, password: string) {
-      Auth.signIn(email, password)
-          .then( data => {
-              this.router.navigateByUrl('/tabs');
-          })
-          .catch( e => {
-            if (e.code === 'UserNotConfirmedException') {
-              this.email.next(email);
-              this.router.navigateByUrl('/confirmation');
-            } else if (e.code === 'PasswordResetRequiredException') {
-              this.presentToast('Password has been reset');
-            } else if (e.code === 'NotAuthorizedException') {
-              this.presentToast('Incorrect password');
-            } else if (e.code === 'UserNotFoundException') {
-              this.presentToast('Email is not registered');
-            } else {
-              console.log(e);
-            }
-          });
+     const promise = new Promise((resolve) => {
+         Auth.signIn(email, password)
+             .then(data => {
+                 resolve();
+                 this.userId.next(data.getUsername());
+                 this.router.navigateByUrl('/tabs');
+             })
+             .catch(e => {
+                 if (e.code === 'UserNotConfirmedException') {
+                     this.email.next(email);
+                     this.router.navigateByUrl('/confirmation');
+                 } else if (e.code === 'PasswordResetRequiredException') {
+                     this.presentToast('Password has been reset');
+                 } else if (e.code === 'NotAuthorizedException') {
+                     this.presentToast('Incorrect password');
+                 } else if (e.code === 'UserNotFoundException') {
+                     this.presentToast('Email is not registered');
+                 } else {
+                     console.log(e);
+                 }
+                 resolve();
+             });
+     });
+     return promise;
   }
 
   async register(email: string, password: string) {
