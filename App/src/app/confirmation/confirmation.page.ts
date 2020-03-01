@@ -18,4 +18,8 @@ export class ConfirmationPage implements OnInit {
   confirmCode(form) {
     this.authService.confirmRegister(this.email, form.value.code);
   }
+
+  resendCode() {
+    this.authService.resendCode(this.email);
+  }
 }

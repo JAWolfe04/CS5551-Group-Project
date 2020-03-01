@@ -14,8 +14,8 @@ export class AuthService {
   constructor(private router: Router,
               private toastController: ToastController) { }
 
-  async login(email: string, password: string) {
-      await Auth.signIn(email, password)
+  login(email: string, password: string) {
+      Auth.signIn(email, password)
           .then( data => {
               this.router.navigateByUrl('/tabs');
           })
@@ -53,7 +53,7 @@ export class AuthService {
       });
   }
 
-  async confirmRegister(email: string, code: string) {
+  confirmRegister(email: string, code: string) {
     Auth.confirmSignUp(email, code)
         .then(data => {
           this.router.navigateByUrl('/');
@@ -66,6 +66,14 @@ export class AuthService {
             console.log(e);
           }
         });
+  }
+
+  resendCode(email: string) {
+    Auth.resendSignUp(email).then(() => {
+      this.presentToast('Code resent successfully');
+    }).catch(e => {
+      console.log(e);
+    });
   }
 
   getEmail() {
@@ -84,7 +92,7 @@ export class AuthService {
     return this.userId.value;
   }
 
-  async logout() {
+  logout() {
     Auth.signOut();
     this.router.navigateByUrl('/');
   }
