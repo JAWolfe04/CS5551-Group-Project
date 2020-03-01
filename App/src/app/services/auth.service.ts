@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Auth } from 'aws-amplify';
 import { ToastController  } from '@ionic/angular';
 
@@ -9,13 +9,16 @@ import { ToastController  } from '@ionic/angular';
 })
 export class AuthService {
   private email = new BehaviorSubject<string>('');
+  private userId = new BehaviorSubject<string>('');
 
   constructor(private router: Router,
               private toastController: ToastController) { }
 
   async login(email: string, password: string) {
-      const user = await Auth.signIn(email, password)
-          .then( data => this.router.navigateByUrl('/tabs'))
+      await Auth.signIn(email, password)
+          .then( data => {
+              this.router.navigateByUrl('/tabs');
+          })
           .catch( e => {
             if (e.code === 'UserNotConfirmedException') {
               this.email.next(email);
@@ -33,9 +36,10 @@ export class AuthService {
   }
 
   async register(email: string, password: string) {
-      Auth.signUp(email, password).then(data => {
+      return Auth.signUp(email, password).then(data => {
         this.email.next(email);
         this.router.navigateByUrl('/confirmation');
+        this.userId.next(data.userSub);
       }).catch(e => {
         if (e.code === 'UsernameExistsException') {
           this.presentToast('Account with the given email already exists');
@@ -72,8 +76,12 @@ export class AuthService {
       return this.email.value !== '';
   }
 
-  isLoggedIn() {
-    return Auth.currentAuthenticatedUser();
+  getUser(): string {
+    Auth.currentAuthenticatedUser()
+        .then(user => { this.userId.next(user.getUsername()); })
+        .catch(err => { console.log(err); });
+
+    return this.userId.value;
   }
 
   async logout() {
