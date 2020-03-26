@@ -14,27 +14,19 @@ const routes: Routes = [
     children: [
       {
         path: 'food',
-        loadChildren: () => import('../food/food.module').then(m => m.FoodPageModule)
+        loadChildren: () => import('../Food/my-food/my-food.module').then(m => m.MyFoodPageModule)
       },
       {
         path: 'home',
         loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
       {
-        path: 'add-food',
-        loadChildren: () => import('../add-food/add-food.module').then(m => m.AddFoodPageModule)
-      },
-      {
-        path: 'routine',
-        loadChildren: () => import('../routine/routine.module').then(m => m.RoutinePageModule)
-      },
-      {
         path: 'exercise',
         loadChildren: () => import('../exercise/exercise.module').then(m => m.ExercisePageModule)
       },
       {
-        path: 'user',
-        loadChildren: () => import('../user/user.module').then(m => m.UserPageModule)
+        path: 'add-food',
+        loadChildren: () => import('../Food/add-food/add-food.module').then(m => m.AddFoodPageModule)
       }
     ]
   }

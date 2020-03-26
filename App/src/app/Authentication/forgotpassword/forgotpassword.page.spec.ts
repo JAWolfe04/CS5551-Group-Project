@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { ForgotpasswordPage } from './forgotpassword.page';
+import {RouterTestingModule} from '@angular/router/testing';
+import {FormsModule} from '@angular/forms';
 
 describe('ForgotpasswordPage', () => {
   let component: ForgotpasswordPage;
@@ -10,7 +12,7 @@ describe('ForgotpasswordPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ForgotpasswordPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [FormsModule, IonicModule, RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ForgotpasswordPage);

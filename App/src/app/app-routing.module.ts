@@ -28,12 +28,10 @@ const routes: Routes = [
   },
   {
     path: 'submitforgotpassword',
-    loadChildren: () => import('./Authentication/submitforgotpassword/submitforgotpassword.module').then(m => m.SubmitforgotpasswordPageModule),
+    loadChildren: () => import('./Authentication/submitforgotpassword/submitforgotpassword.module')
+        .then(m => m.SubmitforgotpasswordPageModule),
     canActivate: [ConfirmGuard]
   }
-
-
-
 ];
 @NgModule({
   imports: [

@@ -62,3 +62,14 @@ router.post('/register', (req, res) => {
         }
     }
 });
+
+router.get('/getFoods/:userId/:date', (req, res) => {
+    const userID = req.params.userId;
+    const date = req.params.date;
+    const query = `SELECT * FROM Food WHERE UserId = ` + mysql.escape(userID) + ' AND Date_Enter = ' + mysql.escape(date);
+    dbConnection.query(query, function (err, result){
+        if (err) throw err;
+        res.send(result);
+    });
+
+});
