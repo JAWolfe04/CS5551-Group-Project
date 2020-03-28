@@ -11,14 +11,18 @@ import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RemoveFoodPageModule } from './Food/remove-food/remove-food.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+  imports: [BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
     AmplifyAngularModule,
     IonicStorageModule.forRoot(),
-    HttpClientModule],
+    HttpClientModule,
+    RemoveFoodPageModule],
   providers: [
     StatusBar,
     AmplifyService,

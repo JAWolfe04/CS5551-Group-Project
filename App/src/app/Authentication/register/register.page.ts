@@ -27,7 +27,7 @@ export class RegisterPage implements OnInit {
         allergy: form.value.allergy} as User;
 
       this.dataService.registerUser(user).subscribe(
-          async error => { console.log('error'); });
+          async error => { console.log(error); });
     });
   }
 }
