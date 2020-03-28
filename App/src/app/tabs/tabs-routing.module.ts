@@ -5,7 +5,7 @@ import { TabsPage } from './tabs.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/tabs/summary',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   },
   {
@@ -14,53 +14,23 @@ const routes: Routes = [
     children: [
       {
         path: 'food',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../food/food.module').then(m => m.FoodPageModule)
-          }
-        ]
+        loadChildren: () => import('../Food/my-food/my-food.module').then(m => m.MyFoodPageModule)
       },
       {
-        path: 'summary',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../summary/summary.module').then(m => m.SummaryPageModule)
-          }
-        ]
-      },
-      {
-        path: 'add-food',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-                import('../add-food/add-food.module').then(m => m.AddFoodPageModule)
-          }
-        ]
-      },
-      {
-        path: 'routine',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-                import('../routine/routine.module').then(m => m.RoutinePageModule)
-          }
-        ]
+        path: 'home',
+        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
       {
         path: 'exercise',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../exercise/exercise.module').then(m => m.ExercisePageModule)
-          }
-        ]
+        loadChildren: () => import('../exercise/exercise.module').then(m => m.ExercisePageModule)
+      },
+      {
+        path: 'add-food',
+        loadChildren: () => import('../Food/add-food/add-food.module').then(m => m.AddFoodPageModule)
+      },
+      {
+        path: 'info-food',
+        loadChildren: () => import('../Food/info-food/info-food.module').then( m => m.InfoFoodPageModule)
       }
     ]
   }

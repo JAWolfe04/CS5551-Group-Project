@@ -1,0 +1,36 @@
+CREATE TABLE `Allergy` (
+  `UserId` varchar(50) NOT NULL,
+  `Allergy` varchar(100) NOT NULL,
+  PRIMARY KEY (`UserId`,`Allergy`),
+  CONSTRAINT `Allergy_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `User` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `Exercise` (
+  `Exercise_ID` int(11) NOT NULL,
+  `Time` time(6) DEFAULT NULL,
+  `Reps` int(11) DEFAULT NULL,
+  `Calories` int(11) DEFAULT NULL,
+  `UserId` int(11) DEFAULT NULL,
+  `Date_Exercise` date DEFAULT NULL,
+  `Name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Exercise_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `Food` (
+  `Food_ID` int(11) NOT NULL,
+  `Date_Enter` date DEFAULT NULL,
+  `UserId` varchar(50) DEFAULT NULL,
+  `Name` varchar(50) DEFAULT NULL,
+  `Calories` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Food_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `User` (
+  `UserId` varchar(50) NOT NULL,
+  `Email` varchar(100) DEFAULT NULL,
+  `DOB` date DEFAULT NULL,
+  `Weight` int(11) DEFAULT NULL,
+  `Height` int(11) DEFAULT NULL,
+  `Gender` char(1) DEFAULT NULL,
+  PRIMARY KEY (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
