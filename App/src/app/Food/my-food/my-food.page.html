@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-datetime [(ngModel)]="date"></ion-datetime>
+    <ion-datetime [(ngModel)]="date" (ionChange)="changedDate()"></ion-datetime>
     <ion-button slot="end" color="light" (click)="logout()">Logout</ion-button>
   </ion-toolbar>
 </ion-header>
@@ -12,18 +12,18 @@
     </ion-toolbar>
   </ion-header>
 
-  <p *ngIf="!items || items.length === 0">
+  <p *ngIf="!foods || foods.length === 0">
     You have not recorded any foods
   </p>
 
-  <ion-list *ngIf="items && items.length > 0">
+  <ion-list *ngIf="foods && foods.length > 0">
     <ion-header>Food Eaten</ion-header>
-    <ion-item *ngFor="let item of items">
-      <ion-label>{{ item.name }}</ion-label>
-      <ion-button class="clearround" slot="end" (click)="getInfo(item.id)">
+    <ion-item *ngFor="let food of foods">
+      <ion-label>{{ food.Name }}</ion-label>
+      <ion-button class="clearround" slot="end" (click)="getInfo(food)">
         <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
       </ion-button>
-      <ion-button class="clearround" slot="end" (click)="remove(item.id)">
+      <ion-button class="clearround" slot="end" (click)="remove(food)">
         <ion-icon name="close-circle-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
@@ -31,7 +31,7 @@
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <ion-button expand="block" color="light" routerLink="/tabs/add-food" routerDirection="forward">
+  <ion-button expand="block" color="light" (click)="addFood()">
     Add Food
   </ion-button>
 </ion-footer>

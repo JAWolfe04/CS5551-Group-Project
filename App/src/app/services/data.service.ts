@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { AuthService } from './auth.service';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../interfaces/user';
 import { environment } from '../../environments/environment';
 import { Food } from '../interfaces/food';
@@ -10,7 +9,7 @@ import { Food } from '../interfaces/food';
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient) { }
 
   registerUser(user: User) {
     return this.http.post(`${environment.APP_SERVER_ADDRESS}/register`, user);
@@ -18,5 +17,13 @@ export class DataService {
 
   getFoods(userID: string, date: string): Observable<Food[]> {
     return this.http.get<Food[]>(`${environment.APP_SERVER_ADDRESS}/getFoods/${userID}/${date}`);
+  }
+
+  addFood(food: Food) {
+    return this.http.post(`${environment.APP_SERVER_ADDRESS}/addFood`, food);
+  }
+
+  removeFood(id: number) {
+    return this.http.post(`${environment.APP_SERVER_ADDRESS}/removeFood`, { id });
   }
 }

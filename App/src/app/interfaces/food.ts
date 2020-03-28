@@ -1,7 +1,7 @@
 export interface Food {
-    Food_ID: number;
-    Date_Enter: string;
-    UserId: string;
+    Food_ID?: number;
+    Date_Enter?: string;
+    UserId?: string;
     Name: string;
     BrandName: string;
     ServingQuantity: number;
