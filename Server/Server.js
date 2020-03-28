@@ -94,3 +94,14 @@ router.post('/removeFood', (req, res) => {
         res.send(result);
     });
 });
+
+router.get('/getExercises/:userId/:date', (req, res) => {
+    const userID = req.params.userId;
+    const date = req.params.date;
+    const query = `SELECT * FROM Exercise WHERE UserId = ` + mysql.escape(userID) +
+        ' AND Date_Exercise = ' + mysql.escape(date);
+    dbConnection.query(query, function (err, result){
+        if (err) throw err;
+        res.send(result);
+    });
+});
