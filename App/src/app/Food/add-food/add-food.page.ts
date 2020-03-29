@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Food } from '../../interfaces/food';
-import {catchError} from "rxjs/operators";
-import {FoodService} from "../../services/food.service";
+import { FoodService } from '../../services/food.service';
 
 @Component({
   selector: 'app-add-food',

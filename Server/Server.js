@@ -62,6 +62,15 @@ router.post('/register', (req, res) => {
     }
 });
 
+router.get('/getUserInfo/:userId', (req, res) => {
+    const userID = req.params.userId;
+    const query = `SELECT * FROM User WHERE UserId = ` + mysql.escape(userID);
+    dbConnection.query(query, function (err, result){
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
 router.get('/getFoods/:userId/:date', (req, res) => {
     const userID = req.params.userId;
     const date = req.params.date;
@@ -103,5 +112,15 @@ router.get('/getExercises/:userId/:date', (req, res) => {
     dbConnection.query(query, function (err, result){
         if (err) throw err;
         res.send(result);
+    });
+});
+
+router.post('/addExercise', (req, res) => {
+    const mesBody = req.body;
+    const exercise = [mesBody.Calories, mesBody.UserId, mesBody.Date_Exercise, mesBody.Name];
+    const query = `INSERT INTO Exercise(Calories, UserId, Date_Exercise, Name) VALUES(?,?,?,?)`;
+    dbConnection.query(query, exercise, (err, results) => {
+        if (err) { return console.error(err.message); }
+        res.send(results);
     });
 });
