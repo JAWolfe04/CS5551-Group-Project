@@ -39,4 +39,8 @@ export class DataService {
   addExercise(exercise: Exercise) {
     return this.http.post(`${environment.APP_SERVER_ADDRESS}/addExercise`, exercise);
   }
+
+  removeExercise(id: number) {
+    return this.http.post(`${environment.APP_SERVER_ADDRESS}/removeExercise`, { id });
+  }
 }

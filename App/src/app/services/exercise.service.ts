@@ -19,6 +19,19 @@ export class ExerciseService {
     this.router.navigateByUrl('/tabs/add-exercise');
   }
 
+  removeExercise(id: number, date: string) {
+      const promise = new Promise((resolve) => {
+          this.dataService.removeExercise(id).subscribe(data => {
+              this.dataService.getExercises(this.auth.getUser(), date.substring(0, 10))
+                  .subscribe(exercises => {
+                      this.exercises.next(exercises);
+                      resolve();
+                  });
+          });
+      });
+      return promise;
+  }
+
   saveExercise(exercise: Exercise) {
     exercise.Date_Exercise = this.date;
     exercise.UserId = this.auth.getUser();

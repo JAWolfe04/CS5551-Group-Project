@@ -124,3 +124,11 @@ router.post('/addExercise', (req, res) => {
         res.send(results);
     });
 });
+
+router.post('/removeExercise', (req, res) => {
+    const query = 'DELETE FROM Exercise WHERE Exercise_ID = ' + mysql.escape(req.body.id);
+    dbConnection.query(query, function (err, result){
+        if (err) throw err;
+        res.send(result);
+    });
+});

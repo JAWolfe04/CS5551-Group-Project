@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Exercise } from '../../interfaces/exercise';
 import { AuthService } from '../../services/auth.service';
 import { ExerciseService } from '../../services/exercise.service';
+import { ModalController } from '@ionic/angular';
+import {RemoveExercisePage} from "../remove-exercise/remove-exercise.page";
 
 @Component({
   selector: 'app-my-exercise',
@@ -12,7 +14,8 @@ export class MyExercisePage implements OnInit {
   date: string = new Date().toISOString();
   exercises: Exercise[] = [];
 
-  constructor(private auth: AuthService, private exerciseService: ExerciseService) { }
+  constructor(private auth: AuthService, private exerciseService: ExerciseService,
+              private modalController: ModalController) { }
 
   ngOnInit() {
     this.exerciseService.currentExercises.subscribe( exercises => this.exercises = exercises);
@@ -24,7 +27,16 @@ export class MyExercisePage implements OnInit {
     this.exerciseService.addExercise();
   }
 
-  removeExercise(exercise: Exercise) {
+  async removeExercise(exercise: Exercise) {
+    const modal = await this.modalController.create({
+      component: RemoveExercisePage,
+      componentProps: {
+        exerciseID: exercise.Exercise_ID,
+        exerciseName: exercise.Name,
+        date: this.date
+      }
+    });
+    await modal.present();
   }
 
   changedDate() {
