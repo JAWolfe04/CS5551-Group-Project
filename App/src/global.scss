@@ -24,3 +24,24 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-content {
+  --background: url('~assets/img/04.jpg') no-repeat center center fixed cover;
+  --background-size: cover;
+}
+
+// top bar image
+.bg-image {
+  background: url('~assets/img/04.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.bg-image1 {
+  background: url('~assets/img/01.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.bg-image2 {
+  background: url('~assets/img/03.jpg') no-repeat center center fixed;
+  background-size: cover;
+}

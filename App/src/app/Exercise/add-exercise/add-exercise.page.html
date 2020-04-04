@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="bg-image">
     <ion-title>Add Exercise</ion-title>
     <ion-button slot="end" color="light" (click)="logout()">Logout</ion-button>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/exercise"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar color="dark">
+  <ion-toolbar class="bg-image">
     <ion-buttons slot="primary">
       <ion-button (click)="createExercise()">
         Create
@@ -16,7 +16,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bg-image no-scroll">
   <p *ngIf="!exercise">Either enter an activity in the search bar above to estimate the
     expended calories or press the Create button to enter in the activity yourself</p>
 

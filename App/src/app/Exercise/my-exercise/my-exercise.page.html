@@ -1,17 +1,38 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="bg-image">
+
+    <ion-title slot="start">Exercise</ion-title>
     <ion-datetime [(ngModel)]="date" (ionChange)="changedDate()"></ion-datetime>
-    <ion-button slot="end" color="light" (click)="logout()">Logout</ion-button>
+
+
+    <ion-fab vertical="top" horizontal="end" >
+      <ion-fab-button class="fab" color="danger" (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bg-image no-scroll" [fullscreen]="true" >
   <p *ngIf="!exercises || exercises.length === 0">
     You have not recorded any activities for this day
   </p>
 
   <ion-list *ngIf="exercises && exercises.length > 0">
-    <ion-header>Activities</ion-header>
+    <ion-header>
+
+
+
+
+      <ion-chip >
+        <ion-icon name="walk" color="success"></ion-icon>
+        <ion-label color="success"> Activities </ion-label>
+      </ion-chip>
+
+
+    </ion-header>
     <ion-item *ngFor="let exercise of exercises">
       <ion-label>{{ exercise.Name }}</ion-label>
       <ion-label>{{ exercise.Calories }}</ion-label>
@@ -23,7 +44,7 @@
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <ion-button expand="block" color="light" (click)="addExercise()">
+  <ion-button expand="block" color="secondary" (click)="addExercise()">
     Add Activity
   </ion-button>
 </ion-footer>

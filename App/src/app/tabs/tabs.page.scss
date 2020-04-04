@@ -1,1 +1,30 @@
+ion-content {
+   --background: url('../../assets/img/04.jpg') no-repeat center center fixed cover;
+   --background-size: cover;
+ }
 
+ ion-item {
+   --background: transparent;
+   --ion-color-base: transparent !important;
+ }
+
+
+ ion-tabs {
+   --background: url('../../assets/img/04.jpg') no-repeat center center fixed cover;
+   --background-size: cover;
+ }
+
+ ion-tab-bar {
+   --background: url('../../assets/img/04.jpg') no-repeat center center fixed cover;
+   --background-size: cover;
+ }
+
+ .bg-image {
+   background: url('../../assets/img/04.jpg') no-repeat center center fixed;
+   background-size: cover;
+ }
+
+.no-scroll .scroll-content {
+  background: url('../../assets/img/04.jpg') no-repeat center center fixed;
+  overflow: hidden;
+ }

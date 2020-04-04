@@ -13,4 +13,14 @@
   --inner-padding-end: 0px;
   --padding-start: 0px;
   --padding-end: 0px;
+  }
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+.fab{
+  width: 40px !important;
+  height: 40px !important;
 }

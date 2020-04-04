@@ -1,10 +1,13 @@
-.bg_img{
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  z-index: 2;
-  position: relative;
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+.fab{
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.ion-text-center{
+  align-content: center;
 }

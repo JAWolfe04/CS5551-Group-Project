@@ -1,9 +1,11 @@
-<ion-content>
+
+
+<ion-content class="bg-image1 no-scroll">
   <ion-row>
     <ion-col size="12" size-sm="10" offset-sm="1" size-md="8" offset-md="2" size-lg="6" offset-lg="3" size-xl="4"
              offset-xl="4">
       <div class="customlogo">
-      <ion-img class="ion-align-self-end" src="assets/icon/favicon.png"></ion-img>
+      <ion-img class="ion-align-self-end" src="assets/img/Logo.png"></ion-img>
     </div>
       <form #form="ngForm" (ngSubmit)="signIn(form)">
         <ion-text>Sign In</ion-text>
@@ -18,7 +20,7 @@
           </ion-input>
         </ion-item>
 
-        <ion-button type="submit" color="primary" expand="block" [disabled]="form.invalid">
+        <ion-button type="submit" color="dark" expand="block" [disabled]="form.invalid">
             <ion-spinner *ngIf="loading"></ion-spinner>
           Login
         </ion-button>
@@ -32,11 +34,11 @@
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <ion-button expand="block" fill="clear" color="dark" routerLink="/register" routerDirection="forward">
+  <ion-button expand="block" color="dark" routerLink="/register" routerDirection="forward">
     <ion-icon slot="start" name="person-add-outline"></ion-icon>
     Sign Up New User
   </ion-button>
-  <ion-button expand="block" fill="clear" color="dark">
+  <ion-button expand="block" color="tertiary">
     <ion-icon slot="start" name="logo-facebook"></ion-icon>
     Login with Facebook
   </ion-button>

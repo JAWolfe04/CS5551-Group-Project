@@ -1,18 +1,26 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-toolbar class="bg-image">
+
+      <ion-fab vertical="top" horizontal="start" >
+        <ion-fab-button class="fab" color="tertiary" (click)="profile()">
+          <ion-icon name="person"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      <ion-title class="ion-text-center">Home</ion-title>
+
+
+      <ion-fab vertical="top" horizontal="end" >
+        <ion-fab-button class="fab" color="danger" (click)="logout()">
+          <ion-icon name="exit"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
   </ion-toolbar>
 </ion-header>
 
 
-
-
-
-<!-- the wallpaper img is not working in the ion-content need to be fixed-->
-<ion-content class="bg_img" src="assets/img/01.jpg">
-
-
-
+  <ion-content class="bg-image no-scroll" [fullscreen]="true" >
 
   <ion-card>
     <img src="assets/img/consum.jpg" />
@@ -24,7 +32,6 @@
     </ion-card-content>
   </ion-card>
 
-
   <ion-card>
     <img src="assets/img/rec_food.jpg" />
     <ion-card-header>
@@ -34,7 +41,6 @@
       here is list of Recommended Food for you
     </ion-card-content>
   </ion-card>
-
 
   <ion-card>
     <img src="assets/img/exercise.jpg" />
@@ -46,7 +52,6 @@
     </ion-card-content>
   </ion-card>
 
-
   <ion-card>
     <img src="assets/img/sum.png" />
     <ion-card-header>
@@ -56,7 +61,6 @@
       here is list of Brief summary for your food and exercises
     </ion-card-content>
   </ion-card>
-
 
   <ion-card>
     <img src="assets/img/near_me.jpg" />
