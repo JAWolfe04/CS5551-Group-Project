@@ -21,12 +21,8 @@ const routes: Routes = [
         loadChildren: () => import('../Food/my-food/my-food.module').then(m => m.MyFoodPageModule)
       },
       {
-        path: 'user',
-        loadChildren: () => import('../Home/user/user.module').then(m => m.UserPageModule)
-      },
-      {
         path: 'profile',
-        loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
+        loadChildren: () => import('../Home/profile/profile.module').then(m => m.ProfilePageModule)
       },
       {
         path: 'add-food',
