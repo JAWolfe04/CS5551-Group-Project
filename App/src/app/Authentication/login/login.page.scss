@@ -2,5 +2,25 @@
   display: block;
   margin: auto;
   margin-top: 35px;
-  width: 200px;
+  width: 175px;
+}
+
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+.tran{
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+.fab{
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.card-center{
+  margin-top: 50%;
 }

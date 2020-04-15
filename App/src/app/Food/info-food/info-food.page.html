@@ -1,73 +1,72 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="bg-image">
     <ion-title>Food Info</ion-title>
-    <ion-button slot="end" color="light" (click)="logout()">Logout</ion-button>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/add-food"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bg-image">
   <ion-row>
     <ion-col size="12" size-sm="10" offset-sm="1" size-md="8" offset-md="2" size-lg="6" offset-lg="3" size-xl="4"
              offset-xl="4">
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Name: {{food.Name}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Brand: {{food.BrandName}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Serving: {{food.ServingQuantity}} {{food.Units}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Calories: {{food.Calories}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Sodium: {{food.Sodium}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Total Fat: {{food.TotalFat}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Saturated Fat: {{food.SaturatedFat}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Cholesterol: {{food.Cholesterol}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Carbohydrates: {{food.Carbohydrates}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Sugar: {{food.Sugar}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Fiber: {{food.Fiber}}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item class="tran">
         <ion-label>
           Protein: {{food.Protein}}
         </ion-label>
@@ -76,6 +75,6 @@
   </ion-row>
 </ion-content>
 
-<ion-footer>
+<ion-footer class="bg-image">
   <ion-button expand="block" color="dark" (click)="saveFood()">Add Food</ion-button>
 </ion-footer>

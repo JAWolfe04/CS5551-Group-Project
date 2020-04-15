@@ -45,3 +45,9 @@ ion-content {
   background: url('~assets/img/03.jpg') no-repeat center center fixed;
   background-size: cover;
 }
+
+// transparent background
+.tran{
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}

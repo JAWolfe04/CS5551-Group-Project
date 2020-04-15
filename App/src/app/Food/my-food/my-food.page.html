@@ -1,58 +1,65 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="bg-image">
-
     <ion-title slot="start">Food</ion-title>
 
     <ion-datetime [(ngModel)]="date" (ionChange)="changedDate()"></ion-datetime>
-
     <ion-fab vertical="top" horizontal="end" >
       <ion-fab-button class="fab" color="danger" (click)="logout()">
         <ion-icon name="exit"></ion-icon>
       </ion-fab-button>
     </ion-fab>
 
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="bg-image no-scroll" [fullscreen]="true" >
 
-
-  <ion-header collapse="condense">
-    <ion-toolbar>
-
-    </ion-toolbar>
-  </ion-header>
-
   <p *ngIf="!foods || foods.length === 0">
-    You have not recorded any foods
+    <ion-card class="card-center">
+      <ion-card-content>
+        <ion-text color="dark"><h2>
+    You have not recorded any food yet !<br>
+          Please add your food
+          <ion-icon name="add-circle-outline" color="dark"></ion-icon>
+        </h2></ion-text>
+    </ion-card-content>
+  </ion-card>
   </p>
 
-  <ion-list *ngIf="foods && foods.length > 0">
-    <ion-header>
 
 
-      <ion-chip color="success">
-        <ion-icon name="fast-food" color="success"></ion-icon>
-        <ion-label color="success">My Food</ion-label>
-      </ion-chip>
+  <ion-card color="#a5a41b">
+    <ion-card-header>
+      <ion-card-title>
+        My Food
+        <ion-icon name="fast-food" color="dark"></ion-icon>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
 
 
-    </ion-header>
-    <ion-item *ngFor="let food of foods">
-      <ion-label>{{ food.Name }}</ion-label>
+  <ion-list class="bg-image" *ngIf="foods && foods.length > 0">
+    <ion-item class="bg-image tran" *ngFor="let food of foods">
+      <ion-label class="tran">{{ food.Name }}</ion-label>
       <ion-button class="clearround" slot="end" (click)="getInfo(food)">
-        <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
+        <ion-icon name="information-circle-outline" color="dark" slot="icon-only"></ion-icon>
       </ion-button>
       <ion-button class="clearround" slot="end" (click)="remove(food)">
-        <ion-icon name="close-circle-outline" slot="icon-only"></ion-icon>
+        <ion-icon name="close-circle-outline" color="danger" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+
+
 </ion-content>
 
-<ion-footer class="ion-no-border">
+<ion-footer class="ion-no-border bg-image">
   <ion-button expand="block" color="secondary" (click)="addFood()">
+    <ion-text color="dark">
     Add Food
+    </ion-text>
   </ion-button>
 </ion-footer>
