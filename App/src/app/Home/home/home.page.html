@@ -1,16 +1,16 @@
-<ion-header>
-    <ion-toolbar class="bg-image">
-      <ion-fab vertical="top" horizontal="start" >
-        <ion-fab-button class="fab" color="tertiary" (click)="profile()">
-          <ion-icon name="person"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
-      <ion-title class="ion-text-center">Home</ion-title>
-      <ion-fab vertical="top" horizontal="end" >
-        <ion-fab-button class="fab" color="danger" (click)="logout()">
-          <ion-icon name="exit"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+<ion-header class="bg-image">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Home</ion-title>
+    <ion-buttons slot="start" >
+      <ion-fab-button class="fab" color="tertiary" (click)="profile()">
+        <ion-icon name="person"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+    <ion-buttons slot="end" >
+      <ion-fab-button class="fab" color="danger" (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
   <ion-content class="bg-image no-scroll" [fullscreen]="true" >

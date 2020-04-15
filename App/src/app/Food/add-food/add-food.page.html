@@ -2,26 +2,21 @@
   <ion-toolbar class="bg-image">
     <ion-title>Add Food</ion-title>
   </ion-toolbar>
+  <ion-toolbar class="bg-image">
+    <ion-searchbar expand="block" fill="outline" placeholder="Search" (search)="searchFoods($event.target.value)"></ion-searchbar>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" color="dark" name="camera-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" color="dark" name="barcode-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="bg-image no-scroll">
-
-
- <!-- search bar with 2 buttons start-->
-  <ion-toolbar class="bg-image">
-  <ion-searchbar expand="block" fill="outline" placeholder="Search" (search)="searchFoods($event.target.value)"></ion-searchbar>
-  <ion-buttons slot="primary">
-    <ion-button>
-      <ion-icon slot="icon-only" color="dark" name="camera-outline"></ion-icon>
-    </ion-button>
-    <ion-button>
-      <ion-icon slot="icon-only" color="dark" name="barcode-outline"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-  </ion-toolbar>
-  <!-- search bar with 2 buttons ends -->
-
-  <ion-list>
+  <ion-list class="bg-image tran" *ngIf="foods && foods.length > 0">
     <ion-item class="bg-image tran" *ngFor="let food of foods">
       <ion-label>{{ food.Name }}</ion-label>
       <ion-button class="clearround" slot="end" (click)="getInfo(food)">

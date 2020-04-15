@@ -30,6 +30,11 @@ ion-content {
   --background-size: cover;
 }
 
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
 // top bar image
 .bg-image {
   background: url('~assets/img/04.png') no-repeat center center fixed;
@@ -44,6 +49,15 @@ ion-content {
 .bg-image2 {
   background: url('~assets/img/03.jpg') no-repeat center center fixed;
   background-size: cover;
+}
+
+.card-center{
+  margin-top: 50%;
+}
+
+.fab{
+  width: 40px !important;
+  height: 40px !important;
 }
 
 // transparent background
