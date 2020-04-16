@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar class="bg-image">
+    <ion-title class="ion-text-center">profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-image">
+  <form class="tran" #form="ngForm" (ngSubmit)="register(form)">
+    <ion-row>
+      <ion-col size="12" size-sm="10" offset-sm="1" size-md="8" offset-md="2" size-lg="6" offset-lg="3" size-xl="4"
+               offset-xl="4">
+        <ion-item class="tran">
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" placeholder="Email" name="email" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="tran" lines="none">
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input type="password" placeholder="Password" name="password" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="tran" lines="none">
+          <ion-label position="stacked">Date of Birth</ion-label>
+          <ion-input type="date" placeholder="##/##/####" name="dob" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="tran" lines="none">
+          <ion-label position="stacked">Weight in pounds</ion-label>
+          <ion-input type="number" placeholder="pounds" name="weight" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="tran" lines="none">
+          <ion-label position="stacked">Height in inches</ion-label>
+          <ion-input type="number" placeholder="Inches" name="height" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="tran" lines="none">
+          <ion-label position="stacked">Food Allergy</ion-label>
+          <ion-input type="text" placeholder="Allergy" name="allergy" ngModel></ion-input>
+          <ion-text class="allergyTip">
+            If you have more than one food allergy, separate them with commas. Ex: Alcohol, Red 20
+          </ion-text>
+        </ion-item>
+
+        <ion-radio-group name="gender" ngModel required>
+          <ion-row>
+            <ion-col>
+              <ion-item class="tran" lines="none">
+                <ion-label>Female</ion-label>
+                <ion-radio color="dark" value="F"></ion-radio>
+              </ion-item>
+            </ion-col>
+
+            <ion-col>
+              <ion-item class="tran" lines="none">
+                <ion-label>Male</ion-label>
+                <ion-radio color="dark" value="M"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+
+        <ion-button type="submit" color="dark" [disabled]="form.invalid" expand="block">Save</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+
+
+<ion-footer class="bg-image1 ion-no-border">
+</ion-footer>

@@ -1,31 +1,68 @@
-<ion-header>
+<ion-header class="bg-image">
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-title class="ion-text-center">Home</ion-title>
+    <ion-buttons slot="start" >
+      <ion-fab-button class="fab" color="tertiary" (click)="profile()">
+        <ion-icon name="person"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+    <ion-buttons slot="end" >
+      <ion-fab-button class="fab" color="danger" (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+  <ion-content class="bg-image no-scroll" [fullscreen]="true" >
+
+<!-- summary start here -->
+    <!-- the data given on pieChart are calling from home.page.ts -->
+    <ion-card color="dark">
+      <canvas baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+              [legend]="pieChartLegend">
+      </canvas>
+      <ion-card-header>
+        <ion-card-title>Summary</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Here is list of Brief summary for your food and exercises.<br>
+        <ion-chip color="danger">
+          <ion-icon name="square" color="danger"></ion-icon>
+          <ion-label color="danger">Red</ion-label>
+        </ion-chip>indicates calories gained.<br>
+
+        <ion-chip color="tertiary">
+          <ion-icon name="square" color="tertiary"></ion-icon>
+          <ion-label color="tertiary">Blue</ion-label>
+        </ion-chip>indicates calories burned.<br>
+
+        <ion-chip color="warning">
+          <ion-icon name="square" color="warning"></ion-icon>
+          <ion-label color="warning">Gold</ion-label>
+        </ion-chip>indicates overall calories.<br>
 
 
+      </ion-card-content>
+    </ion-card>
+    <!-- summary ends here-->
 
 
-
-<!-- the wallpaper img is not working in the ion-content need to be fixed-->
-<ion-content class="bg_img" src="assets/img/01.jpg">
-
-
-
-
-  <ion-card>
+  <ion-card color="danger">
     <img src="assets/img/consum.jpg" />
     <ion-card-header>
       <ion-card-title>Consumption</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content >
       1,012 to reach your daily cap calories. 45% out of 100%
     </ion-card-content>
   </ion-card>
 
-
-  <ion-card>
+  <ion-card color="warning">
     <img src="assets/img/rec_food.jpg" />
     <ion-card-header>
       <ion-card-title>Recommended Food</ion-card-title>
@@ -35,8 +72,7 @@
     </ion-card-content>
   </ion-card>
 
-
-  <ion-card>
+  <ion-card color="success">
     <img src="assets/img/exercise.jpg" />
     <ion-card-header>
       <ion-card-title>Recommended Exercise</ion-card-title>
@@ -46,19 +82,7 @@
     </ion-card-content>
   </ion-card>
 
-
-  <ion-card>
-    <img src="assets/img/sum.png" />
-    <ion-card-header>
-      <ion-card-title>Summary</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      here is list of Brief summary for your food and exercises
-    </ion-card-content>
-  </ion-card>
-
-
-  <ion-card>
+  <ion-card color="light">
     <img src="assets/img/near_me.jpg" />
     <ion-card-header>
       <ion-card-title>Restaurant near you</ion-card-title>

@@ -1,29 +1,57 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-datetime [(ngModel)]="date" (ionChange)="changedDate()"></ion-datetime>
-    <ion-button slot="end" color="light" (click)="logout()">Logout</ion-button>
+  <ion-toolbar class="bg-image">
+
+    <ion-title  class="ion-text-center">Exercise</ion-title>
+    <ion-buttons slot="start">
+      <ion-datetime [(ngModel)]="date" (ionChange)="changedDate()"></ion-datetime>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-fab-button class="fab" color="danger" (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <p *ngIf="!exercises || exercises.length === 0">
-    You have not recorded any activities for this day
-  </p>
 
-  <ion-list *ngIf="exercises && exercises.length > 0">
-    <ion-header>Activities</ion-header>
-    <ion-item *ngFor="let exercise of exercises">
-      <ion-label>{{ exercise.Name }}</ion-label>
-      <ion-label>{{ exercise.Calories }}</ion-label>
-      <ion-button class="clearround" slot="end" (click)="removeExercise(exercise)">
-        <ion-icon name="close-circle-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-list>
+<ion-content class="bg-image no-scroll" [fullscreen]="true" >
+
+  <ion-card class="card-center" *ngIf="!exercises || exercises.length === 0">
+    <ion-card-content>
+      <ion-text color="dark"><h2>
+        You have not recorded any activities for this day. Please add your activity.
+      </h2></ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="#a5a41b" *ngIf="exercises && exercises.length > 0">
+    <ion-card-header>
+      <ion-card-title>
+        Activities
+        <ion-icon name="walk" color="dark"></ion-icon>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list class="bg-image">
+        <ion-item class="bg-image tran" *ngFor="let exercise of exercises">
+          <ion-label>{{ exercise.Name }}</ion-label>
+          <ion-label>{{ exercise.Calories }}</ion-label>
+          <ion-button class="clearround" slot="end" (click)="removeExercise(exercise)">
+            <ion-icon name="close-circle-outline" color="danger" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
-<ion-footer class="ion-no-border">
-  <ion-button expand="block" color="light" (click)="addExercise()">
+<ion-footer class="ion-no-border bg-image">
+  <ion-button expand="block" color="secondary" (click)="addExercise()">
+    <ion-text color="dark">
     Add Activity
+    </ion-text>
   </ion-button>
 </ion-footer>
