@@ -17,7 +17,7 @@
 
 <!-- summary start here -->
     <!-- the data given on pieChart are calling from home.page.ts -->
-    <ion-card color="dark">
+    <ion-card color="dark" *ngIf="baseCalories > 0">
       <canvas baseChart
               [data]="pieChartData"
               [labels]="pieChartLabels"
@@ -57,8 +57,16 @@
     <ion-card-header>
       <ion-card-title>Consumption</ion-card-title>
     </ion-card-header>
-    <ion-card-content >
-      1,012 to reach your daily cap calories. 45% out of 100%
+    <ion-card-content *ngIf="netCalories">
+      <ion-label *ngIf="netCalories > 0">
+        You have {{netCalories}} over your daily calories cap.
+      </ion-label>
+      <ion-label *ngIf="netCalories === 0">
+        You have reached your daily calories cap.
+      </ion-label>
+      <ion-label *ngIf="netCalories < 0">
+        {{netCalories * -1}} to reach your daily calories cap. {{pctCalories}}% out of 100%
+      </ion-label>
     </ion-card-content>
   </ion-card>
 
