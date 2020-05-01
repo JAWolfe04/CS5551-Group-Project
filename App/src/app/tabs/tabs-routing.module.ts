@@ -13,28 +13,36 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'food',
-        loadChildren: () => import('../food/food.module').then(m => m.FoodPageModule)
+        path: 'home',
+        loadChildren: () => import('../Home/home/home.module').then(m => m.HomePageModule)
       },
       {
-        path: 'home',
-        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+        path: 'food',
+        loadChildren: () => import('../Food/my-food/my-food.module').then(m => m.MyFoodPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () => import('../Home/profile/profile.module').then(m => m.ProfilePageModule)
       },
       {
         path: 'add-food',
-        loadChildren: () => import('../add-food/add-food.module').then(m => m.AddFoodPageModule)
+        loadChildren: () => import('../Food/add-food/add-food.module').then(m => m.AddFoodPageModule)
       },
       {
-        path: 'routine',
-        loadChildren: () => import('../routine/routine.module').then(m => m.RoutinePageModule)
+        path: 'info-food',
+        loadChildren: () => import('../Food/info-food/info-food.module').then(m => m.InfoFoodPageModule)
       },
       {
         path: 'exercise',
-        loadChildren: () => import('../exercise/exercise.module').then(m => m.ExercisePageModule)
+        loadChildren: () => import('../Exercise/my-exercise/my-exercise.module').then( m => m.MyExercisePageModule)
       },
       {
-        path: 'user',
-        loadChildren: () => import('../user/user.module').then(m => m.UserPageModule)
+        path: 'add-exercise',
+        loadChildren: () => import('../Exercise/add-exercise/add-exercise.module').then( m => m.AddExercisePageModule)
+      },
+      {
+        path: 'create-exercise',
+        loadChildren: () => import('../Exercise/create-exercise/create-exercise.module').then( m => m.CreateExercisePageModule)
       }
     ]
   }

@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "ionic": "ionic serve"
   },
   "private": true,
   "dependencies": {
@@ -27,13 +28,16 @@
     "@ionic/storage": "^2.2.0",
     "aws-amplify": "^2.2.5",
     "aws-amplify-angular": "^4.1.6",
+    "chart.js": "^2.9.3",
+    "chartjs-plugin-zoom": "^0.7.5",
     "core-js": "^2.5.4",
+    "ng2-charts": "^2.2.4",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.20",
+    "@angular-devkit/build-angular": "~0.803.8",
     "@angular/cli": "8.3.25",
     "@angular/compiler": "~8.2.14",
     "@angular/compiler-cli": "~8.2.14",

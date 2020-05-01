@@ -1,11 +1,12 @@
 import { TestBed, async, inject } from '@angular/core/testing';
-
 import { ConfirmGuard } from './confirm.guard';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('ConfirmGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ConfirmGuard]
+      providers: [ConfirmGuard],
+      imports: [RouterTestingModule]
     });
   });
 

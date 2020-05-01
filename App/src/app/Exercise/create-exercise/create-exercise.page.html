@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar class="bg-image">
+    <ion-title>Create Exercise</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/add-exercise"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-image no-scroll">
+
+
+
+  <ion-card class="card-center" color="" >
+    <ion-card-content>
+
+  <form #form="ngForm" (ngSubmit)="saveExercise(form)">
+    <ion-item lines="none">
+      <ion-label position="stacked">Activity Name</ion-label>
+      <ion-input type="text" placeholder="Name of the Activity" name="name" ngModel required></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Calories Expended</ion-label>
+      <ion-input type="text" placeholder="Calories Expended" name="calories" ngModel required></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" color="primary" [disabled]="form.invalid" expand="block">Save</ion-button>
+  </form>
+
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

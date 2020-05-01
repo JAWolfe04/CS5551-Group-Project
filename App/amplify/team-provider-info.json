@@ -16,5 +16,23 @@
                 "app977e454b": {}
             }
         }
+    },
+    "dea": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-app-dea-150842-authRole",
+            "UnauthRoleArn": "arn:aws:iam::013219321439:role/amplify-app-dea-150842-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::013219321439:role/amplify-app-dea-150842-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-app-dea-150842-deployment",
+            "UnauthRoleName": "amplify-app-dea-150842-unauthRole",
+            "StackName": "amplify-app-dea-150842",
+            "StackId": "arn:aws:cloudformation:us-east-2:013219321439:stack/amplify-app-dea-150842/d3e75510-5c00-11ea-9e32-0a8046302794",
+            "AmplifyAppId": "d25fvgcve7cpdx"
+        },
+        "categories": {
+            "auth": {
+                "app977e454b": {}
+            }
+        }
     }
 }

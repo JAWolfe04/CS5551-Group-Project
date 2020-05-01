@@ -1,0 +1,31 @@
+
+<ion-content padding class="bg-image no-scroll">
+
+
+  <ion-card color="warning" class="card-center">
+    <ion-card-header>
+      <ion-card-title><h1>
+        Are you sure you want to remove <ion-text color="danger">{{exerciseName}}</ion-text> ? </h1></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <ion-fab  vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button class="fab" color="tertiary" (click)="acceptRemoval()">
+      <ion-icon name="checkmark"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab  vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="fab" color="danger" (click)="cancelRemoval()">
+      <ion-icon name="close"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content >
+
+

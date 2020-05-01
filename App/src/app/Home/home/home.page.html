@@ -1,0 +1,105 @@
+<ion-header class="bg-image">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Home</ion-title>
+    <ion-buttons slot="start" >
+      <ion-fab-button class="fab" color="tertiary" (click)="profile()">
+        <ion-icon name="person"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+    <ion-buttons slot="end" >
+      <ion-fab-button class="fab" color="danger" (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  <ion-content class="bg-image no-scroll" [fullscreen]="true" >
+
+<!-- summary start here -->
+    <!-- the data given on pieChart are calling from home.page.ts -->
+    <ion-card color="dark" *ngIf="baseCalories > 0">
+      <canvas baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+              [legend]="pieChartLegend">
+      </canvas>
+      <ion-card-header>
+        <ion-card-title>Summary</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Here is list of Brief summary for your food and exercises.<br>
+        <ion-chip color="danger">
+          <ion-icon name="square" color="danger"></ion-icon>
+          <ion-label color="danger">Red</ion-label>
+        </ion-chip>indicates calories gained.<br>
+
+        <ion-chip color="tertiary">
+          <ion-icon name="square" color="tertiary"></ion-icon>
+          <ion-label color="tertiary">Blue</ion-label>
+        </ion-chip>indicates calories burned.<br>
+
+        <ion-chip color="warning">
+          <ion-icon name="square" color="warning"></ion-icon>
+          <ion-label color="warning">Gold</ion-label>
+        </ion-chip>indicates overall calories.<br>
+
+
+      </ion-card-content>
+    </ion-card>
+    <!-- summary ends here-->
+
+
+  <ion-card color="danger">
+    <img src="assets/img/consum.jpg" />
+    <ion-card-header>
+      <ion-card-title>Consumption</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="netCalories">
+      <ion-label *ngIf="netCalories > 0">
+        You have {{netCalories}} over your daily calories cap.
+      </ion-label>
+      <ion-label *ngIf="netCalories === 0">
+        You have reached your daily calories cap.
+      </ion-label>
+      <ion-label *ngIf="netCalories < 0">
+        {{netCalories * -1}} to reach your daily calories cap. {{pctCalories}}% out of 100%
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="warning">
+    <img src="assets/img/rec_food.jpg" />
+    <ion-card-header>
+      <ion-card-title>Recommended Food</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      here is list of Recommended Food for you
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="success">
+    <img src="assets/img/exercise.jpg" />
+    <ion-card-header>
+      <ion-card-title>Recommended Exercise</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      here is list of Recommended Exercise ONLY for you
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="light">
+    <img src="assets/img/near_me.jpg" />
+    <ion-card-header>
+      <ion-card-title>Restaurant near you</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      google maps show stores near you
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>
