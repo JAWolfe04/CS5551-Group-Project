@@ -1,23 +1,42 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>AddFood</ion-title>
+  <ion-toolbar class="bg-image">
+    <ion-title>Add Food</ion-title>
+  </ion-toolbar>
+  <ion-toolbar class="bg-image">
+    <ion-searchbar expand="block" fill="outline" placeholder="Search" (search)="searchFoods($event.target.value)"></ion-searchbar>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" color="dark" name="camera-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" color="dark" name="barcode-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bg-image no-scroll">
+  <ion-list class="bg-image tran" *ngIf="foods && foods.length > 0">
+    <ion-item class="bg-image tran" *ngFor="let food of foods">
+      <ion-label>{{ food.Name }}</ion-label>
+      <ion-button class="clearround" slot="end" (click)="getInfo(food)">
+        <ion-icon name="information-circle-outline" color="dark" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button class="clearround" slot="end" (click)="saveFood(food)">
+        <ion-icon name="add-circle-outline" color="danger" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
 
-  <br>
-  <br>
-
-  <br> Add :
-
-
-  <br>  <ion-button color=“light” routerLink="/tabs/routine" routerDirection="forward"> Create New </ion-button>
-
-
-
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
 
-<ion-footer>
-  <ion-button expand="full" color="Danger" routerLink="/tabs/food" routerDirection="forward"> Return </ion-button>
+<ion-footer class="bg-image">
+  <ion-button class="ion-no-border bg-image" expand="block" color="secondary"  routerLink="/tabs/food" routerDirection="forward">
+    <ion-text color="dark">
+    Back
+    </ion-text>
+  </ion-button>
 </ion-footer>
