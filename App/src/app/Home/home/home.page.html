@@ -57,15 +57,16 @@
     <ion-card-header>
       <ion-card-title>Consumption</ion-card-title>
     </ion-card-header>
-    <ion-card-content *ngIf="netCalories">
-      <ion-label *ngIf="netCalories > 0">
-        You have {{netCalories}} over your daily calories cap.
+    <ion-card-content *ngIf="baseCalories">
+      <ion-label *ngIf="calNetCal() > 0">
+        You have {{calNetCal()}} over your daily calories cap.
       </ion-label>
-      <ion-label *ngIf="netCalories === 0">
+      <ion-label *ngIf="calNetCal() === 0">
         You have reached your daily calories cap.
       </ion-label>
-      <ion-label *ngIf="netCalories < 0">
-        {{netCalories * -1}} to reach your daily calories cap. {{pctCalories}}% out of 100%
+      <ion-label *ngIf="calNetCal() < 0">
+        {{calNetCal() * -1}} to reach your daily calories cap.
+        {{calPct()}}% out of 100%
       </ion-label>
     </ion-card-content>
   </ion-card>

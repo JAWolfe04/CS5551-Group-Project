@@ -5,7 +5,7 @@
   <ion-toolbar class="bg-image">
     <ion-searchbar expand="block" fill="outline" placeholder="Search" (search)="searchFoods($event.target.value)"></ion-searchbar>
     <ion-buttons slot="primary">
-      <ion-button>
+      <ion-button (click)="imageSearch()">
         <ion-icon slot="icon-only" color="dark" name="camera-outline"></ion-icon>
       </ion-button>
       <ion-button>

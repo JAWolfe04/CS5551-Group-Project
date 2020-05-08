@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Food } from '../../interfaces/food';
 import { FoodService } from '../../services/food.service';
 
+
 @Component({
   selector: 'app-add-food',
   templateUrl: './add-food.page.html',
@@ -41,6 +42,10 @@ export class AddFoodPage implements OnInit {
 
       infiniteScroll.target.complete();
     }, 500);
+  }
+
+  imageSearch() {
+    this.foodService.imageSearch();
   }
 
   getManualResults() {

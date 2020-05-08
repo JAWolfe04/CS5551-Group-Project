@@ -13,6 +13,8 @@ export class FoodService {
   currentFoods = this.foods.asObservable();
   private food = new BehaviorSubject<Food>(null);
   currentFood = this.food.asObservable();
+  private foodCal = new BehaviorSubject<number>(0);
+  currentFoodCal = this.foodCal.asObservable();
   date: string;
 
   constructor(private router: Router, private dataService: DataService, private auth: AuthService) { }
@@ -33,13 +35,27 @@ export class FoodService {
         this.dataService.getFoods(this.auth.getUser(), this.date.substring(0, 10))
             .subscribe(foods => {
               this.foods.next(foods);
+              this.saveCalories(foods);
               this.router.navigateByUrl('/tabs/food');
             }));
   }
 
   getFoods(date: string) {
     this.dataService.getFoods(this.auth.getUser(), date.substring(0, 10))
-        .subscribe(foods => this.foods.next(foods));
+        .subscribe(foods => {
+          this.foods.next(foods);
+          this.saveCalories(foods);
+        });
+  }
+
+  saveCalories(foods) {
+    let calories = 0;
+    foods.forEach((food: Food) => calories += food.Calories);
+    this.foodCal.next(calories);
+  }
+
+  imageSearch() {
+    this.router.navigateByUrl('/tabs/image-upload');
   }
 
   removeFood(id: number, date: string) {
@@ -48,6 +64,7 @@ export class FoodService {
             this.dataService.getFoods(this.auth.getUser(), date.substring(0, 10))
                 .subscribe(foods => {
                       this.foods.next(foods);
+                      this.saveCalories(foods);
                       resolve();
                 });
       });

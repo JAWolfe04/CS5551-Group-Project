@@ -12,6 +12,10 @@ import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RemoveFoodPageModule } from './Food/remove-food/remove-food.module';
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +31,10 @@ import { RemoveFoodPageModule } from './Food/remove-food/remove-food.module';
     StatusBar,
     AmplifyService,
     SplashScreen,
+    Camera,
+    File,
+    WebView,
+    FilePath,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

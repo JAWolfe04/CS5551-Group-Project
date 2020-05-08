@@ -43,6 +43,10 @@ const routes: Routes = [
       {
         path: 'create-exercise',
         loadChildren: () => import('../Exercise/create-exercise/create-exercise.module').then( m => m.CreateExercisePageModule)
+      },
+      {
+        path: 'image-upload',
+        loadChildren: () => import('../Food/image-upload/image-upload.module').then( m => m.ImageUploadPageModule)
       }
     ]
   }
